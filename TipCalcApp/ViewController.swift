@@ -49,12 +49,16 @@ class ViewController: UIViewController {
         let roundedValue = round(sender.value / step) * step
         sender.value = roundedValue
         //tipPercentageTextField.text = "\(Int(roundedValue))"
-        print(roundedValue)
         calc(tips: roundedValue)
     }
 
     func doneClicked() {
         view.endEditing(true)
+        if let tips = Float(tipPercentageTextField.text!) {
+            calc(tips: tips)
+        } else {
+            calc(tips: 15)
+        }
     }
     
     func calc(tips:Float) {
